@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header *ngIf="creationMode">
+                CREAR MESA DE VOTACIÓN
+            </nb-card-header>
+            <nb-card-header *ngIf="!creationMode">
+                ACTUALIZAR MESA DE VOTACIÓN
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Número mesa</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="number" class="form-control" [disabled]="!creationMode"
+                            [(ngModel)]="table.numero_mesa" />
+                        <p *ngIf="sendingAttemp && table.numero_mesa==null">Requerido</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Cédula</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="number" class="form-control" [(ngModel)]="table.cedula" />
+                        <p *ngIf="sendingAttemp && table.cedula==null">Requerido</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <button *ngIf="creationMode" class="btn btn-primary btn-block" (click)="create()">
+                        Crear
+                    </button>
+                    <button *ngIf="!creationMode" class="btn btn-primary btn-block" (click)="edit()">
+                        Actualizar
+                    </button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
